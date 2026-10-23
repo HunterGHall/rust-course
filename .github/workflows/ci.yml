@@ -1,0 +1,51 @@
+name: Capstones
+
+# Builds and tests the three capstone crates that the lessons embed,
+# and compile-checks every Rust code block in the docs, so the code in the
+# course is always known to build and pass.
+
+on:
+  push:
+    branches: [main]
+    paths: ["capstones/**", "docs/**", "tools/**", ".github/workflows/ci.yml"]
+  pull_request:
+    paths: ["capstones/**", "docs/**", "tools/**", ".github/workflows/ci.yml"]
+  workflow_dispatch:
+
+jobs:
+  capstones:
+    name: Capstones (${{ matrix.os }}, ${{ matrix.toolchain }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        toolchain: [stable]
+        include:
+          - os: ubuntu-latest
+            toolchain: "1.85"
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: clippy
+      - run: bash capstones/ci.sh
+      - name: Clippy
+        if: matrix.toolchain == 'stable'
+        run: |
+          for crate in task-tracker link-checker file-indexer; do
+            (cd capstones/$crate && cargo fmt --check && cargo clippy --all-targets -- -D warnings)
+          done
+
+  examples:
+    name: Lesson code blocks compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: python3 tools/sync_capstones.py --check
+      - run: python3 tools/check_examples.py

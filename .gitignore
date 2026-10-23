@@ -1,0 +1,11 @@
+# MkDocs build output
+site/
+
+# Rust build output
+target/
+**/*.rs.bk
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

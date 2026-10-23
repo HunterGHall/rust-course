@@ -1,0 +1,95 @@
+site_name: The Rust Course
+site_description: A complete, self-paced Rust curriculum — beginner to advanced.
+site_url: https://hunterghall.github.io/rust-course/
+repo_url: https://github.com/HunterGHall/rust-course
+repo_name: HunterGHall/rust-course
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - toc.follow
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: brown
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: brown
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Beginner:
+      - beginner/index.md
+      - "1. Setup & your first program": beginner/01-setup-and-first-program.md
+      - "2. Variables, mutability & types": beginner/02-variables-and-types.md
+      - "3. Numbers & math": beginner/03-numbers-and-math.md
+      - "4. Booleans & conditionals": beginner/04-booleans-and-conditionals.md
+      - "5. Loops": beginner/05-loops.md
+      - "6. Functions": beginner/06-functions.md
+      - "7. Ownership, borrowing & slices": beginner/07-ownership-and-borrowing.md
+      - "8. Strings & characters": beginner/08-strings.md
+      - "9. Arrays, vectors & slices": beginner/09-vectors-and-slices.md
+      - "10. HashMaps & sets": beginner/10-hashmaps-and-sets.md
+      - "11. Option, Result & files": beginner/11-option-result-and-files.md
+      - "12. Capstone - command-line task tracker": beginner/12-capstone-task-tracker.md
+  - Intermediate:
+      - intermediate/index.md
+      - "1. Structs & methods": intermediate/01-structs-and-methods.md
+      - "2. Enums & pattern matching": intermediate/02-enums-and-pattern-matching.md
+      - "3. Traits": intermediate/03-traits.md
+      - "4. Generics": intermediate/04-generics.md
+      - "5. Lifetimes": intermediate/05-lifetimes.md
+      - "6. Closures & iterators": intermediate/06-closures-and-iterators.md
+      - "7. Smart pointers": intermediate/07-smart-pointers.md
+      - "8. Error handling in depth": intermediate/08-error-handling.md
+      - "9. Modules & packages": intermediate/09-modules-and-packages.md
+      - "10. Dependencies & serde": intermediate/10-dependencies-and-serde.md
+      - "11. Testing": intermediate/11-testing.md
+      - "12. Capstone - Markdown link checker": intermediate/12-capstone-link-checker.md
+  - Advanced:
+      - advanced/index.md
+      - "1. Advanced traits & dispatch": advanced/01-advanced-traits.md
+      - "2. Advanced generics & type-level design": advanced/02-advanced-generics.md
+      - "3. Advanced lifetimes, variance & Pin": advanced/03-advanced-lifetimes.md
+      - "4. Macros": advanced/04-macros.md
+      - "5. Concurrency with threads": advanced/05-threads-and-shared-state.md
+      - "6. Async Rust": advanced/06-async-fundamentals.md
+      - "7. Async patterns with Tokio": advanced/07-async-patterns-with-tokio.md
+      - "8. Unsafe Rust": advanced/08-unsafe-rust.md
+      - "9. FFI & C interoperability": advanced/09-ffi-and-c-interop.md
+      - "10. Performance & profiling": advanced/10-performance.md
+      - "11. Publishing, API design & distribution": advanced/11-publishing-and-api-design.md
+      - "12. Capstone - parallel file indexer": advanced/12-capstone-parallel-indexer.md
